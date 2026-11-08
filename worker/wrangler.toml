@@ -1,0 +1,11 @@
+name = "final-project-worker"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+GEMINI_MODEL  = "gemini-3.5-flash"   # check the Gemini deprecations page; record the date in context/TOOLS.md
+CF_ACCOUNT_ID = "<your account id>"
+AI_GATEWAY_ID = "<your gateway id>"
+
+# The key is a secret:  npx wrangler secret put GEMINI_API_KEY
+# Local dev reads .dev.vars (git-ignored):  GEMINI_API_KEY="..."
