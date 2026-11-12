@@ -36,7 +36,6 @@ Total: 100
 | Node.js | [v22.23.5](https://nodejs.org/en/about/previous-releases) was the latest v22 patch (Nov 11); this workspace reports v22.23.4. v26.13.1 was the latest LTS (Nov 10). | [OpenJS Foundation / Node.js project](https://nodejs.org/en/about) | [MIT](https://github.com/nodejs/node/blob/main/LICENSE) | Free; commercial support is optional. | The [devcontainer](../.devcontainer/devcontainer.json) selects the Node 22 image, not a patch version; local `node --version` reports 22.23.4. | 2026-11-12 |
 | npm | [12.2.2](https://registry.npmjs.org/npm), published Nov 4; this workspace reports 10.9.9. | Four registry maintainer accounts ([registry metadata](https://registry.npmjs.org/npm)) | [Artistic-2.0](https://registry.npmjs.org/npm) | Free CLI; registry and other npm services have separate terms. | npm is the package manager, not a dependency in [`package.json`](../package.json); local `npm --version` reports 10.9.9. | 2026-11-12 |
 | Wrangler | [4.160.1](https://registry.npmjs.org/wrangler), published Nov 11; also the latest registry version. | One npm publisher account, `wrangler-publisher` ([registry metadata](https://registry.npmjs.org/wrangler)) | [MIT OR Apache-2.0](https://api.deps.dev/v3/systems/npm/packages/wrangler/versions/4.160.1) | Free CLI; Cloudflare service usage is billed separately. | Installed but undeclared and extraneous. `npm audit --json` could not run because no lockfile exists (`ENOLOCK`); [deps.dev](https://api.deps.dev/v3/systems/npm/packages/wrangler/versions/4.160.1) reports no advisories for 4.160.1. | 2026-11-12 |
-| First-party `app.js` | No package version or release date; [local project file](../app.js). | Project source; no third-party package maintainer. | No repository `LICENSE` file found; no third-party license applies to the script itself. | No separate price. | [`index.html`](../index.html) loads local [`app.js`](../app.js); no external JavaScript package or CDN script is used. | 2026-11-12 |
 | Cloudflare Workers + D1 | [Workers pricing docs](https://developers.cloudflare.com/workers/platform/pricing/) last updated Oct 2; [D1 docs](https://developers.cloudflare.com/d1/platform/pricing/) last updated Oct 30. Managed services have no project-pinned version. | [Cloudflare](https://www.cloudflare.com/) | [Self-serve agreement](https://www.cloudflare.com/terms/) and [product-specific terms](https://www.cloudflare.com/service-specific-terms-other-terms/); not an open-source license. | Workers Free: 100,000 requests/day and 10 ms CPU/invocation. D1 Free: 5 million rows read/day, 100,000 rows written/day, 5 GB storage. Paid Workers starts at $5/month; paid D1 has usage-based charges. | No D1 binding/database ID is configured in [`wrangler.toml`](../worker/wrangler.toml), so D1 use is intended, not currently deploy-ready. | 2026-11-12 |
 | Google Gemini API | [`gemini-3.5-flash-lite`](https://ai.google.dev/gemini-api/docs/deprecations) is listed as released July 21; project code calls the floating `gemini-flash-lite-latest` alias in [`worker/src/index.js`](../worker/src/index.js). | [Google](https://ai.google.dev/) | [Gemini API Additional Terms](https://ai.google.dev/gemini-api/terms), effective Mar 23, 2026; no open-source license. | For versioned 3.5 Flash-Lite, [pricing](https://ai.google.dev/gemini-api/docs/pricing) lists free-tier use and paid rates of $0.30 input / $2.50 output per million tokens. Alias target and account tier are not established here. | [`wrangler.toml`](../worker/wrangler.toml) declares `gemini-3.5-flash`, but the Worker hard-codes a different model alias. Google says free-tier content may be used to improve products; paid-tier content is not. | 2026-11-12 |
 | GitHub Pages | Managed service; no versioned release. [Documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) checked on the date shown. | [GitHub](https://github.com/) | [GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service); not an open-source license. | [Published site limit](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) 1 GB; soft bandwidth limit 100 GB/month and soft build limit 10/hour. Plan eligibility and account-specific cost are unconfirmed ([pricing](https://github.com/pricing)). | Deployment status and configured Pages source are not confirmed in the repository. | 2026-11-12 |
@@ -47,10 +46,28 @@ Total: 100
 ### Scores and Rings
 | Dependency | Stability | Pricing | Institutional fit | Exit cost | Weighted | Ring | Reason in one line |
 |------------|---|---|---|---|---|---|---|
+| Node.js | 3 | 5 | 4 | 1  | 3.1 | Trial | Other languages such as Python or Go may be more easier to manage as complexity grows, so we are not committing to Node.js yet. |
+| npm | 3 | 5 | 4| 1  | 3.7 | Trial  | If project complexity eventually prompts a language change, we would also need to replace npm with that language's package manager. |
+| Wrangler 4.160.1 | 4 | 5 | 4 | 3 | 4.0 | Adopt | Wrangler is Cloudflare's official CLI and supports the platform we plan to adopt. |
+| Cloudflare Workers + D1 | 4 | 4 | 3 | 3  | 3.6 | Adopt | The free tiers should cover a project of this size, but exit plan is required because D1 holds the project's data. |
+| Google Gemini API | 2 | 3 | 4 | 4 | 3.1 | Trial  | The Google-issued API key is required to access Gemini; the free tier may not cover testing or production, so alternatives will depend on budget and availability. |
+| GitHub Pages | 5  | 5 | 4 | 4 | 4.6 | Adopt | Because this is a public repository, GitHub Pages is a free option for hosting the static frontend. |
+| GitHub Codespaces | 4 | 3 | 3 | 5 | 3.9 | Adopt | The GitHub Student Developer Pack includes Codespaces access that is adequate for now, but this critical dependency needs an exit plan. |
+| Bolt.new | 3 | 3 | 3| 4 | 3.3 | Trial | Its free tier is adequate for a small project, but an exit plan is needed if its limits become insufficient. |
+| GitHub Copilot | 3  | 3 | 4 | 5 | 3.7 | Adopt | The GitHub Student Developer Pack provides 200 monthly tokens, which is more than enough for development, but this critical dependency needs an exit plan. |
 
 ### Exit Plans (every critical dependency, every Trial)
 | Dependency | Trigger | Substitute | Hours to swap | Tested? (date and how) |
-|------------|---|---|---|---|
+|------------|---------|------------|---|---|
+| Node.js | | | | |
+| npm | | | | |
+| Wrangler 4.160.1 | | | | |
+| Cloudflare Workers + D1 | | | | |
+| Google Gemini API | | | | |
+| GitHub Pages | | | | |
+| GitHub Codespaces | | | | |
+| Bolt.new | | | | |
+| GitHub Copilot | | | | |
 
 ### Changes Caused by This Audit
 - <removal, pin, or replacement, with commit hash>
