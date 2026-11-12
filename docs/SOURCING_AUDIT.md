@@ -3,7 +3,7 @@
 ## Audit 1, November 2026
 
 ### Prediction Stake (commit before any evidence)
-<One falsifiable prediction about what this audit will find. Resolution: Tight / Loose / Open.>
+This audit will identify at least two dependencies or tools that can be removed without affecting the project's required functionality.
 
 ### Weights (commit in their own commit, before scoring)
 | Criterion | Weight | Why this weight for this project |
