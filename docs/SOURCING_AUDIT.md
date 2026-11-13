@@ -52,27 +52,23 @@ Total: 100
 | Cloudflare Workers + D1 | 4 | 4 | 3 | 3  | 3.6 | Adopt | The free tiers should cover a project of this size, but exit plan is required because D1 holds the project's data. |
 | Google Gemini API | 2 | 3 | 4 | 4 | 3.1 | Trial  | The Google-issued API key is required to access Gemini; the free tier may not cover testing or production, so alternatives will depend on budget and availability. |
 | GitHub Pages | 5  | 5 | 4 | 4 | 4.6 | Adopt | Because this is a public repository, GitHub Pages is a free option for hosting the static frontend. |
-| GitHub Codespaces | 4 | 3 | 3 | 5 | 3.9 | Adopt | The GitHub Student Developer Pack includes Codespaces access that is adequate for now, but this critical dependency needs an exit plan. |
-| Bolt.new | 3 | 3 | 3| 4 | 3.3 | Trial | Its free tier is adequate for a small project, but an exit plan is needed if its limits become insufficient. |
-| GitHub Copilot | 3  | 3 | 4 | 5 | 3.7 | Adopt | The GitHub Student Developer Pack provides 200 monthly tokens, which is more than enough for development, but this critical dependency needs an exit plan. |
+| GitHub Codespaces | 4 | 3 | 3 | 5 | 3.9 | Adopt | The GitHub Student Developer Pack includes Codespaces access that is adequate for now. |
+| Bolt.new | 3 | 3 | 3| 4 | 3.3 | Trial | Its free tier is adequate for a small project. |
+| GitHub Copilot | 3  | 3 | 4 | 5 | 3.7 | Adopt | The GitHub Student Developer Pack provides 200 monthly tokens, which is more than enough for development. |
 
 ### Exit Plans (every critical dependency, every Trial)
 | Dependency | Trigger | Substitute | Hours to swap | Tested? (date and how) |
 |------------|---------|------------|---|---|
-| Node.js | | | | |
-| npm | | | | |
-| Wrangler 4.160.1 | | | | |
-| Cloudflare Workers + D1 | | | | |
-| Google Gemini API | | | | |
-| GitHub Pages | | | | |
-| GitHub Codespaces | | | | |
-| Bolt.new | | | | |
-| GitHub Copilot | | | | |
+| Node.js | The product requires a desktop GUI instead of a web app. | Python with Tkinter | 12 | Not yet |
+| npm | Node.js is replaced or npm no longer meets package-management needs. | PyPI packages installed with pip | 12 | Not yet |
+| Wrangler 4.160.1 | Wrangler becomes unsupported or incompatible with Cloudflare deployment. | Azure Functions Core Tools and Azure CLI | 5 | Not yet |
+| Cloudflare Workers + D1 | Free-tier limits are frequently hit, or service pricing or terms change. | Azure Functions + Azure SQL Database | 5 | Not yet |
+| Google Gemini API | Free-tier limits or rate limits are frequently hit, or API pricing or terms change. | Grok API | 2 | Not yet |
+| GitHub Pages | The repository must be private, or Pages terms change for public repositories. | Streamlit Community Cloud | 2 | Not yet |
 
 ### Changes Caused by This Audit
-- <removal, pin, or replacement, with commit hash>
-- <ADR amended or superseded, if any>
-- <DDR lines added, if AI helped>
+- No changes were made to the application, dependencies, or configuration: no removal, pin, or replacement was made, and no ADR was changed.
+- All listed components are crucial to their documented project roles: Node.js/npm run the test and setup workflow (`package.json:5-7`, `README.md:22-24`); Wrangler configures the Worker and D1 binding (`worker/wrangler.toml:1-15`); the Worker uses D1 for entries (`worker/src/index.js:46-48,185-215`) and Gemini for role suggestions (`worker/src/index.js:76-90`); GitHub Pages is the configured browser origin (`worker/src/index.js:14-16`); Codespaces supplies the development container and forwarded ports (`.devcontainer/devcontainer.json:3-8`); and Bolt.new and Copilot are recorded as tools used to build the feature (`context/TOOLS.md:5,8`).
 
 ### Prediction Stake Resolution
-<What happened, and whether the prediction held.>
+The prediction did not hold: the audit found no dependency or tool that can be removed while preserving all required project functionality. No changes or removals were made.

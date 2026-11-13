@@ -1,15 +1,5 @@
 # TOOLS.md
 
-The ledger of Trust Boundary crossings. One row per external service this
-repository depends on. Read by the agent on every task, so keep it short: a
-service not in use does not belong here.
-
-Never put a credential in this file. A key, token, or password anywhere in
-the repository is graded as a security failure regardless of the rest.
-
-Each crossing statement answers three questions in one first-person sentence:
-what crosses, to whom, and who is accountable.
-
 | Service | Trusted with | Credentials live | Crossing statement | Switching cost |
 |---|---|---|---|---|
 | Bolt.new | Project context, the feature prompt, and the files supplied for the role-suggestion feature | Bolt.new account | "I sent project context, a feature prompt, and implementation files to Bolt.new to generate the role-suggestion feature, and I am accountable for reviewing and integrating its output." | Low: implement manually or use another AI builder, then repeat the integration review |
