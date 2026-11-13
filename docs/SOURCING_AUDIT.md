@@ -20,7 +20,6 @@ Total: 100
 | Node.js | Runtime / test tool | `package.json` (`node --test` scripts), `README.md` | No; used for development and evals |
 | npm | Package manager | `README.md` (`npm install`), `package.json` | No |
 | Wrangler 4.160.1 | Dev package / Cloudflare CLI; installed but undeclared | `README.md`, `worker/wrangler.toml`, `npm ls --all` | No; deployment tool only |
-| First-party `app.js` | Local browser script (not a CDN script) | `index.html` (`<script src="app.js">`), `app.js` | Yes; downloaded by browser |
 | Cloudflare Workers + D1 | Platform / database | `worker/wrangler.toml`, `worker/src/index.js`, `README.md`, `context/FEATURES.md`, `context/ARCHITECTURE.md`; no D1 binding is currently configured in `worker/wrangler.toml` | No; hosts the API and is intended to store submitted entries |
 | Google Gemini API | Model / API | `worker/src/index.js` calls `gemini-flash-lite-latest`; `worker/wrangler.toml` separately declares `GEMINI_MODEL = "gemini-3.5-flash"` | No; called server-side. The configured model variable does not match the hard-coded endpoint model |
 | GitHub Pages | Front-end hosting platform (deployment status not confirmed) | `worker/src/index.js` CORS allow-origin; placeholder deployment details in `README.md` and `docs/DEPLOY.md` | Yes; serves the static front end if deployed there |
