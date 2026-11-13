@@ -28,7 +28,7 @@ Total: 100
 | Bolt.new | Builder | `context/TOOLS.md`; delegation record will be added to `docs/DDR-LOG.md` by December 14 | No; development-time use only |
 | GitHub Copilot | Builder / coding assistant | `context/TOOLS.md`; delegation record will be added to `docs/DDR-LOG.md` by December 14 | No; development-time use only |
 
-`package.json` declares zero direct dependencies (production or development). `npm ls --all --parseable` reports 40 installed package entries, all marked extraneous (41 lines including the project root); therefore zero installed packages are pulled in by declared direct dependencies. Wrangler is present at 4.160.1 but is not declared in the manifest or lockfile. The only HTML script found is the local `app.js`; there are no CDN scripts.
+`package.json` declares zero direct dependencies (production or development). `npm ls --all --parseable` reports 40 installed package entries, all marked extraneous (41 lines including the project root); therefore zero installed packages are pulled in by declared direct dependencies. Wrangler is present at 4.160.1 but is not declared in the manifest or lockfile.
 
 ### Evidence (each fact with its source and the date you read it)
 | Dependency | Latest version and date | Maintainers or vendor | License or terms | Limits or price | Other notes | Checked on |
