@@ -29,6 +29,18 @@ Total: 100
 
 `package.json` declares zero direct dependencies (production or development). `npm ls --all --parseable` reports 40 installed package entries, all marked extraneous (41 lines including the project root); therefore zero installed packages are pulled in by declared direct dependencies. Wrangler is present at 4.160.1 but is not declared in the manifest or lockfile.
 
+### Command Evidence
+The following local command outputs further document the dependency and browser-loading inventory:
+
+| Command | Observed output |
+|---|---|
+| `cat package.json \| grep -A6 dependencies` | No output; no `dependencies` section was matched. |
+| `npm ls --omit=dev --all` | `mgt3745-final@ /workspaces/mgt3745-final-aaronsarasota04` followed by `└── (empty)`, confirming no installed production dependencies. |
+| `npm install` | `up to date, audited 1 package in 314ms`; `found 0 vulnerabilities`. |
+| `grep -rn "<script src=" *.html` | `9:  <script src="app.js" defer></script>` |
+| `grep -n "binding\|model" wrangler.toml` | `grep: wrangler.toml: No such file or directory`; this command checked the repository root. The project configuration referenced above is `worker/wrangler.toml`. |
+| `grep -n "binding\|model" worker/wrangler.toml` | `9:# The D1 binding. Your Worker sees this database as env.DB.`; `11:binding = "DB"` |
+
 ### Evidence (each fact with its source and the date you read it)
 | Dependency | Latest version and date | Maintainers or vendor | License or terms | Limits or price | Other notes | Checked on |
 |------------|------|------|------|------|------|------|
