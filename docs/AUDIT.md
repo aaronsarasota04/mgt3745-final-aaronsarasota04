@@ -18,7 +18,7 @@
 | TOOLS.md | Aaron Rahim | 2026-11-11 | Tooling and environment setup guidance | KEEP | none |
 | USERS.md | Aaron Rahim | 2026-11-11 | User and stakeholder context | KEEP | none |
 | curiosity/FAILURES.md | Aaron Rahim | 2026-11-11 | Optional file; empty | REMOVE | none |
-| curiosity/META.md | -- | 2026-11-11 | Optional file; empty | REMOVE | none |
+| curiosity/META.md | Aaron Rahim | 2026-11-11 | Optional file; empty | REMOVE | none |
 | curiosity/QUESTIONS.md | Aaron Rahim | 2026-11-11 | Optional file; empty | REMOVE | none |
 | curiosity/README.md | Aaron Rahim | 2026-11-11 | Optional file; empty | REMOVE | none |
 | curiosity/SOUL.md | Aaron Rahim | 2026-11-11 | Optional file; empty | REMOVE | none |
