@@ -1,12 +1,11 @@
-# <Project Name>
+# Job Skill Comparison: Do Your Skills Match the Intended Job?
 
-> Replace every line in angle brackets. A README that still carries template placeholders loses points.
 
-**One sentence:** <what this product does, for whom, and the change it exists to cause>
+**One sentence:** This product compares your skills with a job’s requirements to help seniors pursue full-time roles and sophomores or juniors find internships and enter the job market.
 
 **Deployed:** <https URL of the live product>  
-**Status:** <working / partly working / blocked, with one sentence on what is incomplete>  
-**Hours spent:** <running total>
+**Status:** working-> 8 STYLE.md token misses need to be fixed.
+**Hours spent:** 12 (including HW1-5)
 
 ## See It Work
 
@@ -20,8 +19,9 @@
 
 ```bash
 npm install
-npm test                 # code evals in evals/
-npx wrangler dev         # only if the project has a worker/ backend
+npm test                
+npx wrangler dev       
+
 ```
 
 ## The Record
@@ -37,6 +37,7 @@ npx wrangler dev         # only if the project has a worker/ backend
 | Decision memo | [docs/DECISION-001.md](docs/DECISION-001.md) |
 | Real-user feedback | [docs/FEEDBACK.md](docs/FEEDBACK.md) |
 | Scaffold audits | [docs/AUDIT.md](docs/AUDIT.md) |
+| Sourcing audit | [docs/SOURCING_AUDIT.md](docs/SOURCING_AUDIT.md) |
 | Deployment notes | [docs/DEPLOY.md](docs/DEPLOY.md) |
 | Self-review with Homogenization Check | [docs/SELF-REVIEW.md](docs/SELF-REVIEW.md) |
 
